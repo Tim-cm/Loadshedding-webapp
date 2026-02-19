@@ -1,3 +1,4 @@
+#ignore all .exe, .pdb, .obj, .ilk, .vscode files
 *.exe
 *.pdb
 *.obj
