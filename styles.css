@@ -1,0 +1,135 @@
+/* Applies styling to all elements in the page to change them from the defaults */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*styles the whole html page*/
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    background-image: url(loadshedding.jpg);
+    backdrop-filter: blur(4px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    color: #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container {
+    background: rgba(0, 0, 0, 0.505);
+    border-radius: 14px;
+    width: 650px;
+    padding: 25px 30px;
+    box-shadow: 0 5px 10px rgba(4, 59, 224, 0.265);
+}
+
+/* styles the headers */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+h3 {
+    margin-top: 22px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+
+.capacity-group {
+    margin-bottom: 15px;
+}
+
+.capacity-group input {
+    width: 100%;
+}
+
+/* styles the dynamic load rows added*/
+.load-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.load-row input {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+}
+
+
+.buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+
+button {
+    flex: 1;
+    border: none;
+    border-radius: 10px;
+    padding: 11px 0;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.add-btn {
+    background: #3498db;
+    color: #ffffff;
+}
+
+.sim-btn {
+    background: #2ecc71;
+    color: #0b2f17;
+}
+
+/* styles the dynamic result box */
+pre {
+    margin-top: 18px;
+    padding: 14px;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    font-size: 13px;
+    white-space: pre-wrap;
+}
+
+/*adjusts */
+@media (max-width: 680px) {
+    body{
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    }
+    .container {
+        width: 95%;
+    }
+
+    .load-row {
+        grid-template-columns: 1fr;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+}
