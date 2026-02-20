@@ -1,4 +1,5 @@
-/* Applies styling to all elements in the page to change them from the defaults */
+/* Applies styling to all elements in the page to change them from the defaults 
+ensuring cross browser consistency*/
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,7 +8,7 @@
 
 /*styles the whole html page*/
 body {
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    background: linear-gradient(135deg, #0f1827, #203a43, #2c5364);
     background-image: url(loadshedding.jpg);
     backdrop-filter: blur(4px);
     background-position: center;

@@ -18,20 +18,21 @@ bool compareLoadsByPriority(const Load& first, const Load& second){
 
 
 int main() {
-    // Create HTTP server
+    // Create HTTP server to be accessed using HTTP requests from the frontend
     httplib::Server server;
 
-    // enables cross origin resource sharing
+    // enables cross origin resource sharing by the frontend to the server
     server.set_default_headers({
         { "Access-Control-Allow-Origin", "*" },
         { "Access-Control-Allow-Methods", "POST, GET, OPTIONS" },
         { "Access-Control-Allow-Headers", "Content-Type" }
     });
 
-    // Handle preflight requests
-    server.Options("/shed", [](const httplib::Request&, httplib::Response& res) {res.status = 200;});
+    // Handle preflight requests to check if server is reachable
+    server.Options("/shed", [](const httplib::Request&, httplib::Response& response) {response.status = 200;});
 
-    //Load shedding endpoint that receives request and sends response
+    //Load shedding endpoint that receives the request processes the data and sends a response
+    // back to the frontend
     server.Post("/shed", [](const httplib::Request& request, httplib::Response& response) 
         {
             int capacity = std::stoi(request.get_param_value("capacity"));
@@ -39,7 +40,8 @@ int main() {
 
             std::vector<Load> loads;
 
-            // Read loads from request to use them in the program
+            // Read loads, their priority and power from JSON file in the request to use them in the program
+            // for computation
             for (int i = 0; i < count; i++) {
                 Load loadObject;
                 loadObject.name = request.get_param_value(
@@ -63,7 +65,8 @@ int main() {
             std::vector<std::string> served;
             std::vector<std::string> shed;
 
-            // serves the loads according to their priority
+            // serves the loads according to their priority and sheds the ones with lowest priority
+            // which exceed the grid supply
             for (const Load& loadObject : loads) {
                 if (used + loadObject.power <= capacity) {
                     used += loadObject.power;
@@ -73,7 +76,7 @@ int main() {
                 }
             }
 
-            // Build JSON response to send to the frontend
+            // Build JSON response to send to the frontend with the computed  information
             std::string jsonResponse = "{";
 
             jsonResponse += "\"served\": [";
@@ -104,4 +107,5 @@ int main() {
 
     std::cout << "Server running at http://localhost:8080\n";
     server.listen("0.0.0.0", 8080);
+    return 0;
 }
