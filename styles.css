@@ -117,7 +117,8 @@ pre {
     white-space: pre-wrap;
 }
 
-/*adjusts */
+/*adjusts the background and some elements when the width is decreased to 
+enable seamless use in devices like phones */
 @media (max-width: 680px) {
     body{
         background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);

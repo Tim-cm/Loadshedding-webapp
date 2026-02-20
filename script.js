@@ -17,7 +17,10 @@ function addLoad() {
     document.getElementById("loads").appendChild(div);
     numberOfLoads++;
 }
-
+// reads the input from the user and formats it in JSON
+// the data is then sent to the server for computation using HTTP requests
+// it then takes the response from the server and presents it in the webpage 
+// by adding text to the element pre
 function simulate() {
     const capacity = document.getElementById("capacity").value;
     const data = new URLSearchParams();
