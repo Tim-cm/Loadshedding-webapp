@@ -7,4 +7,4 @@ the priority of the area until the grid power demand is within the grid power su
 
 To run thhe loadshedding webapplication:
 • Run the server.cpp file
-• Run the index.html file with a live server and change to a browser
+• Run the index.html file with a live server and itt will redirect to a browser
